@@ -4,7 +4,6 @@ html, body {
 }
 
 body {
-    background-color: #f5f5f5;
     background-image: url('/media/brand_pic.png'), linear-gradient(rgba(255,255,255,0.8), rgba(255,255,255,0.8));
     background-size: cover;
     background-position: center;
@@ -36,52 +35,18 @@ body::before {
     background-color: transparent;
 }
 
-.title.is-2 {
-    color: #333;
-    text-shadow: 1px 1px 3px rgba(255, 255, 255, 0.8);
+.logo-container {
+    text-align: center;
+    margin-bottom: 2rem;
 }
 
-.video-container {
-    margin-bottom: 1.5rem;
+.logo-image {
+    max-width: 300px;
+    height: auto;
 }
 
-.video-title {
-    margin-bottom: 2rem !important;
-    line-height: 1.2;
-    font-size: 1.25rem; /* Slightly smaller font size */
-}
-
-.video-date {
-    margin-top: 2rem;
-    margin-bottom: 1rem;
-    color: #000000;
-    font-size: 0.9rem; /* Smaller font size for date */
-}
-
-.error {
-    color: #ff3860;
-    font-weight: bold;
-}
-
-/* Responsive iframe container */
-.video-wrapper {
-    position: relative;
-    padding-bottom: 56.25%; /* 16:9 aspect ratio */
-    height: 0;
-    overflow: hidden;
-    margin-top: 1rem; /* Add space above video */
-}
-
-.video-wrapper iframe {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-}
-
-/* Improved styles for better spacing */
-.skater-info, #searchForm, .card, .box {
+/* Improved styles for skater info */
+.skater-info {
     background-color: rgba(255, 255, 255, 0.9);
     border-radius: 6px;
     box-shadow: 0 2px 3px rgba(10, 10, 10, 0.1);
@@ -89,15 +54,34 @@ body::before {
     margin-bottom: 1.5rem;
 }
 
-.skater-info .title {
-    margin-bottom: 1.5rem; /* Increased from 1rem to 1.5rem for more space */
+.skater-info h2 {
+    font-size: 2.5rem;
+    margin-bottom: 1.5rem;
     line-height: 1.2;
 }
 
-.skater-info .subtitle {
-    margin-bottom: 0.75rem; /* Increased from 0.25rem to 0.75rem */
-    margin-top: 0.5rem; /* Added top margin */
-    line-height: 1.4;
+.skater-info p {
+    margin-bottom: 1rem;
+    line-height: 1.6;
+}
+
+.skater-info p:first-of-type {
+    font-size: 1.25rem;
+    margin-bottom: 1.5rem;
+    font-weight: bold;
+}
+
+.skater-info p:nth-of-type(2) {
+    margin-bottom: 1.5rem;
+}
+
+/* Styles for search form */
+#searchForm {
+    background-color: rgba(255, 255, 255, 0.9);
+    border-radius: 6px;
+    box-shadow: 0 2px 3px rgba(10, 10, 10, 0.1);
+    padding: 1.5rem;
+    margin-bottom: 1.5rem;
 }
 
 #searchForm .select, #searchForm .button {
@@ -115,10 +99,14 @@ body::before {
     border-color: #5dbc9d;
 }
 
+/* Styles for video cards */
 .card {
     height: 100%;
     display: flex;
     flex-direction: column;
+    background-color: rgba(255, 255, 255, 0.9);
+    border-radius: 6px;
+    box-shadow: 0 2px 3px rgba(10, 10, 10, 0.1);
 }
 
 .card-content {
@@ -126,21 +114,51 @@ body::before {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    padding: 1.5rem;
 }
 
 .column.is-half {
     padding: 0.75rem;
 }
 
-/* Additional styles for better consistency and spacing */
-.title.is-3 {
-    margin-bottom: 1rem; /* Increased from 0.75rem to 1rem */
-    line-height: 1.2;
+.video-container {
+    margin-bottom: 1.5rem;
 }
 
-.subtitle.is-5 {
-    margin-bottom: 0.75rem; /* Increased from 0.5rem to 0.75rem */
-    line-height: 1.4;
+.video-title {
+    margin-bottom: 1rem !important;
+    line-height: 1.2;
+    font-size: 1.25rem;
+    font-weight: bold;
+}
+
+.video-date {
+    margin-top: 1rem;
+    margin-bottom: 0.5rem;
+    color: #000000;
+    font-size: 0.9rem;
+}
+
+/* Responsive iframe container */
+.video-wrapper {
+    position: relative;
+    padding-bottom: 56.25%; /* 16:9 aspect ratio */
+    height: 0;
+    overflow: hidden;
+    margin-top: 1rem;
+}
+
+.video-wrapper iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.error {
+    color: #ff3860;
+    font-weight: bold;
 }
 
 /* Ensure text doesn't overlap */

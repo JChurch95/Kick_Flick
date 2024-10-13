@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us - Kick Flick</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
+    <link rel="stylesheet" href="./css/styles.css">
+    <link rel="icon" type="image/png" href="./media/Kick Flick Favicon.png">
+</head>
+<body>
+    <div class="content-wrapper">
+        <section class="section">
+            <div class="container">
+                <div class="logo-container">
+                    <img src="./media/Kick Flick.png" alt="Kick Flick Logo" class="logo-image">
+                </div>
+                <div class="navigation-buttons">
+                    <a href="index.html" class="button is-primary">Back to Home</a>
+                </div>
+                <div class="box contact-box">
+                    <h1 class="title is-2 has-text-centered">Contact Us!</h1>
+                    <h2 class="subtitle has-text-centered">
+                        If you don't see the skater you are looking for, send us a message with their name, picture, and a link to their YouTube video and we'll add it here!
+                    </h2>
+                    <form id="contactForm" class="mt-5">
+                        <div class="field">
+                            <label class="label">Your Name</label>
+                            <div class="control">
+                                <input class="input" type="text" name="name" placeholder="Enter your name" required>
+                            </div>
+                        </div>
+                        <div class="field">
+                            <label class="label">Your Email</label>
+                            <div class="control">
+                                <input class="input" type="email" name="email" placeholder="Enter your email" required>
+                            </div>
+                        </div>
+                        <div class="field">
+                            <label class="label">Skater's Name</label>
+                            <div class="control">
+                                <input class="input" type="text" name="skaterName" placeholder="Enter the skater's name" required>
+                            </div>
+                        </div>
+                        <div class="field">
+                            <label class="label">YouTube Video Link</label>
+                            <div class="control">
+                                <input class="input" type="url" name="videoLink" placeholder="Enter the YouTube video link" required>
+                            </div>
+                        </div>
+                        <div class="field">
+                            <label class="label">Additional Information</label>
+                            <div class="control">
+                                <textarea class="textarea" name="additionalInfo" placeholder="Any additional information about the skater"></textarea>
+                            </div>
+                        </div>
+                        <div class="field">
+                            <div class="control">
+                                <button type="submit" class="button is-primary is-fullwidth">Submit</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </section>
+    </div>
+    <script src="./js/main.js"></script>
+</body>
+</html>

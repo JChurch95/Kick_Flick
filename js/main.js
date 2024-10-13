@@ -1,6 +1,7 @@
 document.addEventListener('DOMContentLoaded', function () {
     console.log('DOM ready... Do a kick flip!!!');
     const searchForm = document.querySelector('#searchForm');
+    const contactForm = document.querySelector('#contactForm');
     
     if (searchForm) {
         searchForm.addEventListener('submit', function(e) {
@@ -9,6 +10,13 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     } else {
         console.error("Could not find element with id 'searchForm'");
+    }
+
+    if (contactForm) {
+        contactForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            submitContactForm();
+        });
     }
 
     // Populate the dropdown when the page loads
@@ -99,9 +107,18 @@ function displaySkaterInfo(skaterInfo) {
                     <h2 class="title is-3">${skaterInfo.skater_name}</h2>
                     ${pictureHtml}
                 </div>
-                <p class="subtitle is-5"><span class="has-text-weight-bold">Nationality:</span> ${skaterInfo.nationality}</p>
-                <p class="subtitle is-5"><span class="has-text-weight-bold">Brand:</span> ${skaterInfo.brand}</p>
-                <p class="subtitle is-5"><span class="has-text-weight-bold">Bio:</span> ${skaterInfo.bio}</p>
+                <p class="subtitle is-5">
+                    <span class="info-label">Nationality:</span> 
+                    <span class="info-value">${skaterInfo.nationality}</span>
+                </p>
+                <p class="subtitle is-5">
+                    <span class="info-label">Brand:</span> 
+                    <span class="info-value">${skaterInfo.brand}</span>
+                </p>
+                <p class="subtitle is-5">
+                    <span class="info-label">Bio:</span> 
+                    <span class="info-value">${skaterInfo.bio}</span>
+                </p>
             </div>
         </div>
     `;
@@ -128,7 +145,7 @@ function displayVideos(videos) {
             <div class="card">
                 <div class="card-content">
                     <h3 class="title is-4 video-title">${video.video_name}</h3>
-                    <p class="subtitle is-6 video-date">Year: ${video.video_date}</p>
+                    <p class="subtitle is-6 video-date"><span class="year-label">Year: </span>${video.video_date}</p>
                     <div class="video-wrapper">
                         <iframe
                             src="https://www.youtube.com/embed/${videoId}"
@@ -157,4 +174,20 @@ function displayError(message) {
         return;
     }
     resultsDiv.innerHTML = `<div class="column is-12"><p class="has-text-centered error">${message}</p></div>`;
+}
+
+function submitContactForm() {
+    const form = document.getElementById('contactForm');
+    const formData = new FormData(form);
+    const formObject = Object.fromEntries(formData.entries());
+
+    // Here you would typically send the form data to your server
+    // For now, we'll just log it to the console
+    console.log('Form submitted:', formObject);
+
+    // Display a success message
+    alert('Thank you for your submission! We will review the information and add the skater to our database soon.');
+    
+    // Reset the form
+    form.reset();
 }

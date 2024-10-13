@@ -102,9 +102,7 @@ async def get_skaters(db: Session = Depends(get_session)):
     except Exception as e:
         print(f"Error in get_skaters: {str(e)}")
         raise HTTPException(status_code=500, detail=f"Internal server error: {str(e)}")
-
-
-
+  
 # Skaters CRUD
 app.post("/skaters/")(create_generic(Skater))
 app.get("/skaters/{item_id}")(read_generic(Skater))
@@ -116,8 +114,7 @@ app.post("/videos/")(create_generic(Video))
 app.get("/videos/{item_id}")(read_generic(Video))
 app.put("/videos/{item_id}")(update_generic(Video))
 app.delete("/videos/{item_id}")(delete_generic(Video))
-
-
+ 
 # Run the app
 if __name__ == "__main__":
     uvicorn.run("main:app", host="localhost", port=8000, reload=True)

@@ -25,6 +25,13 @@ async function populateSkaterDropdown() {
         }
         const skaters = await response.json();
 
+        // Sort skaters alphabetically by last name
+        skaters.sort((a, b) => {
+            const lastNameA = a.skater_name.split(' ').pop().toLowerCase();
+            const lastNameB = b.skater_name.split(' ').pop().toLowerCase();
+            return lastNameA.localeCompare(lastNameB);
+        });
+
         skaters.forEach(skater => {
             const option = document.createElement('option');
             option.value = skater.skater_name;
@@ -40,7 +47,21 @@ async function populateSkaterDropdown() {
 async function searchVideos() {
     const skaterName = document.getElementById('skaterName').value;
     const resultsDiv = document.getElementById('results');
-    resultsDiv.innerHTML = '<div class="column is-12"><progress class="progress is-primary" max="100">15%</progress></div>';
+    const skaterInfoDiv = document.getElementById('skaterInfo');
+    
+    if (resultsDiv) {
+        resultsDiv.innerHTML = '<div class="column is-12"><progress class="progress is-primary" max="100">15%</progress></div>';
+    } else {
+        console.error("Could not find element with id 'results'");
+        return;
+    }
+    
+    if (skaterInfoDiv) {
+        skaterInfoDiv.innerHTML = ''; // Clear previous skater info
+    } else {
+        console.error("Could not find element with id 'skaterInfo'");
+        return;
+    }
 
     try {
         const response = await fetch(`http://localhost:8000/api/videos/?skater=${encodeURIComponent(skaterName)}`);
@@ -48,35 +69,50 @@ async function searchVideos() {
             throw new Error(`HTTP error! status: ${response.status}`);
         }
         const videos = await response.json();
-        displayVideos(videos);
+        if (videos.length > 0) {
+            displaySkaterInfo(videos[0]); // Display skater info
+            displayVideos(videos);
+        } else {
+            displayError('No videos found for this skater.');
+        }
     } catch (error) {
         console.error('Error fetching videos:', error);
         displayError('An error occurred while fetching videos. Please try again.');
     }
 }
 
+function displaySkaterInfo(skaterInfo) {
+    const skaterInfoDiv = document.getElementById('skaterInfo');
+    if (!skaterInfoDiv) {
+        console.error("Could not find element with id 'skaterInfo'");
+        return;
+    }
+    skaterInfoDiv.innerHTML = `
+
+            <div class="card">
+                <div class="card-content">
+                    <h2 class="title is-3">${skaterInfo.skater_name}</h2>
+                    <p class="subtitle is-5"><span class="has-text-weight-bold">Nationality:</span> ${skaterInfo.nationality}</p>
+                    <p class="subtitle is-5"><span class="has-text-weight-bold">Brand:</span> ${skaterInfo.brand}</p>
+                    <p class="subtitle is-5"><span class="has-text-weight-bold">Bio:</span> ${skaterInfo.bio}</p>
+                </div>
+            </div>
+        </div>
+    `;
+}
+
 function displayVideos(videos) {
     const resultsDiv = document.getElementById('results');
+    if (!resultsDiv) {
+        console.error("Could not find element with id 'results'");
+        return;
+    }
     resultsDiv.innerHTML = '';
 
     if (videos.length === 0) {
         resultsDiv.innerHTML = '<div class="column is-12"><p class="has-text-centered">No videos found for this skater.</p></div>';
         return;
     }
-
-    // Display skater info once at the top
-    const skaterInfo = videos[0]; // All videos will have the same skater info
-    const skaterInfoDiv = document.createElement('div');
-    skaterInfoDiv.className = 'column is-12';
-    skaterInfoDiv.innerHTML = `
-        <div class="box">
-            <h2 class="title is-3">${skaterInfo.skater_name}</h2>
-            <p class="subtitle is-5">Nationality: ${skaterInfo.nationality}</p>
-            <p class="subtitle is-5">Brand: ${skaterInfo.brand}</p>
-            <p class="subtitle is-5">Bio: ${skaterInfo.bio}</p>
-        </div>
-    `;
-    resultsDiv.appendChild(skaterInfoDiv);
 
     videos.forEach(video => {
         const videoId = extractVideoId(video.youtube_url);
@@ -110,5 +146,9 @@ function extractVideoId(url) {
 
 function displayError(message) {
     const resultsDiv = document.getElementById('results');
+    if (!resultsDiv) {
+        console.error("Could not find element with id 'results'");
+        return;
+    }
     resultsDiv.innerHTML = `<div class="column is-12"><p class="has-text-centered error">${message}</p></div>`;
 }

@@ -10,6 +10,7 @@ body {
     background-repeat: no-repeat;
     background-attachment: fixed;
     background-blend-mode: overlay;
+    cursor: url('/media/kick\ flick\ cursor.png'), auto; /* Added custom cursor */
 }
 
 body::before {
@@ -46,12 +47,13 @@ body::before {
 }
 
 /* Improved styles for skater info */
-.skater-info {
+.skater-info .box, .box {
     background-color: rgba(255, 255, 255, 0.9);
     border-radius: 6px;
     box-shadow: 0 2px 3px rgba(10, 10, 10, 0.1);
     padding: 1.5rem;
-    margin-bottom: 1.5rem;
+    margin-bottom: 2rem;
+    border: 1px solid black !important;
 }
 
 .skater-info h2 {
@@ -75,6 +77,11 @@ body::before {
     margin-bottom: 1.5rem;
 }
 
+/* Reinforcing Bulma's bold class */
+.has-text-weight-bold {
+    font-weight: bold !important;
+}
+
 /* Styles for search form */
 #searchForm {
     background-color: rgba(255, 255, 255, 0.9);
@@ -82,6 +89,7 @@ body::before {
     box-shadow: 0 2px 3px rgba(10, 10, 10, 0.1);
     padding: 1.5rem;
     margin-bottom: 1.5rem;
+    border: 1px solid black !important;
 }
 
 #searchForm .select, #searchForm .button {
@@ -89,15 +97,16 @@ body::before {
 }
 
 #searchForm .button {
-    background-color: #66cdaa;
-    border-color: #66cdaa;
-    color: white;
+    background-color: #78cb76;
+    border-color: #000000;
+    color: rgb(0, 0, 0);
 }
 
 #searchForm .button:hover {
-    background-color: #5dbc9d;
-    border-color: #5dbc9d;
+    background-color: #78cb76;
+    border-color: #000000;
 }
+
 
 /* Styles for video cards */
 .card {
@@ -107,6 +116,7 @@ body::before {
     background-color: rgba(255, 255, 255, 0.9);
     border-radius: 6px;
     box-shadow: 0 2px 3px rgba(10, 10, 10, 0.1);
+    border: 1px solid black !important;
 }
 
 .card-content {
@@ -126,14 +136,14 @@ body::before {
 }
 
 .video-title {
-    margin-bottom: 1rem !important;
+    margin-bottom: 2rem !important;
     line-height: 1.2;
     font-size: 1.25rem;
     font-weight: bold;
 }
 
 .video-date {
-    margin-top: 1rem;
+    margin-top: 2rem;
     margin-bottom: 0.5rem;
     color: #000000;
     font-size: 0.9rem;

@@ -87,15 +87,21 @@ function displaySkaterInfo(skaterInfo) {
         console.error("Could not find element with id 'skaterInfo'");
         return;
     }
-    skaterInfoDiv.innerHTML = `
+    
+    const pictureHtml = skaterInfo.skater_picture 
+        ? `<img src="/media/${skaterInfo.skater_picture}" alt="${skaterInfo.skater_name}" class="skater-picture">`
+        : '<p>No picture available</p>';
 
-            <div class="card">
-                <div class="card-content">
+    skaterInfoDiv.innerHTML = `
+        <div class="card">
+            <div class="card-content">
+                <div class="has-text-centered mb-4">
                     <h2 class="title is-3">${skaterInfo.skater_name}</h2>
-                    <p class="subtitle is-5"><span class="has-text-weight-bold">Nationality:</span> ${skaterInfo.nationality}</p>
-                    <p class="subtitle is-5"><span class="has-text-weight-bold">Brand:</span> ${skaterInfo.brand}</p>
-                    <p class="subtitle is-5"><span class="has-text-weight-bold">Bio:</span> ${skaterInfo.bio}</p>
+                    ${pictureHtml}
                 </div>
+                <p class="subtitle is-5"><span class="has-text-weight-bold">Nationality:</span> ${skaterInfo.nationality}</p>
+                <p class="subtitle is-5"><span class="has-text-weight-bold">Brand:</span> ${skaterInfo.brand}</p>
+                <p class="subtitle is-5"><span class="has-text-weight-bold">Bio:</span> ${skaterInfo.bio}</p>
             </div>
         </div>
     `;

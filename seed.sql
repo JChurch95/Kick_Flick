@@ -35,3 +35,16 @@ INSERT INTO videos (skater_id, video_name, video_date, youtube_url) VALUES
 (11, '"XXX" Pizza Part', 2022, 'https://www.youtube.com/watch?v=rL0kyNm5rG8');
 
 
+
+INSERT INTO pictures (skater_id, skater_picture) VALUES
+(1, 'yuto_pic.png'),
+(2, 'gustavo_pic.png'),
+(3, 'nyjah_pic.png'),
+(4, 'kelvin_pic.png'),
+(5, 'jamie_pic.png'),
+(6, 'daiki_pic.png'),
+(7, 'dashawn_pic.png'),
+(8, 'felipe_pic.png'),
+(9, 'aurelien_pic.png'),
+(10, 'giovanni_pic.png'),
+(11, 'vincent_pic.png');

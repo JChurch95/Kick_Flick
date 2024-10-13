@@ -13,3 +13,10 @@ CREATE TABLE videos (
     video_date INTEGER CHECK (video_date >= 1000 AND video_date <= 9999),
     youtube_url TEXT
 );
+
+
+CREATE TABLE pictures (
+    id SERIAL PRIMARY KEY,
+    skater_id INTEGER REFERENCES skaters(id),
+    skater_picture TEXT
+);

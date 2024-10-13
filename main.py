@@ -1,10 +1,12 @@
 import uvicorn
 from fastapi import FastAPI, Depends, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
+from fastapi.staticfiles import StaticFiles
 from sqlmodel import Field, Session, select, SQLModel
 from db import get_session
 from models.skaters import Skater
 from models.videos import Video
+from models.pictures import Picture
 
 app = FastAPI()
 
@@ -23,6 +25,9 @@ app.add_middleware(
     allow_methods=["*"],
     allow_headers=["*"],
 )
+
+# Mount the media directory
+app.mount("/media", StaticFiles(directory="media"), name="media")
 
 # Operations
 @app.get("/")
@@ -72,8 +77,7 @@ def delete_generic(model):
 @app.get("/api/videos/")
 async def get_videos(skater: str, db: Session = Depends(get_session)):
     try:
-        query = select(Video, Skater).join(Skater, Video.skater_id == Skater.id)\
-            .where(Skater.skater_name.ilike(f"%{skater}%"))
+        query = select(Video, Skater, Picture).join(Skater, Video.skater_id == Skater.id).outerjoin(Picture, Skater.id == Picture.skater_id).where(Skater.skater_name.ilike(f"%{skater}%"))
         
         results = db.exec(query).all()
         
@@ -87,8 +91,9 @@ async def get_videos(skater: str, db: Session = Depends(get_session)):
             "skater_name": skater.skater_name,
             "nationality": skater.nationality,
             "brand": skater.brand,
-            "bio": skater.bio
-        } for video, skater in results]
+            "bio": skater.bio,
+            "skater_picture": picture.skater_picture if picture else None
+        } for video, skater, picture in results]
     except Exception as e:
         print(f"Error in get_videos: {str(e)}")
         raise HTTPException(status_code=500, detail=f"Internal server error: {str(e)}")
@@ -102,7 +107,7 @@ async def get_skaters(db: Session = Depends(get_session)):
     except Exception as e:
         print(f"Error in get_skaters: {str(e)}")
         raise HTTPException(status_code=500, detail=f"Internal server error: {str(e)}")
-  
+
 # Skaters CRUD
 app.post("/skaters/")(create_generic(Skater))
 app.get("/skaters/{item_id}")(read_generic(Skater))
@@ -114,7 +119,7 @@ app.post("/videos/")(create_generic(Video))
 app.get("/videos/{item_id}")(read_generic(Video))
 app.put("/videos/{item_id}")(update_generic(Video))
 app.delete("/videos/{item_id}")(delete_generic(Video))
- 
+
 # Run the app
 if __name__ == "__main__":
     uvicorn.run("main:app", host="localhost", port=8000, reload=True)

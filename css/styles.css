@@ -47,7 +47,7 @@ body::before {
 }
 
 /* Improved styles for skater info */
-.skater-info .box, .box {
+.skater-info .box{
     background-color: rgba(255, 255, 255, 0.9);
     border-radius: 6px;
     box-shadow: 0 2px 3px rgba(10, 10, 10, 0.1);
@@ -58,7 +58,7 @@ body::before {
 
 .skater-info h2 {
     font-size: 2.5rem;
-    margin-bottom: 1.5rem; 
+    margin-bottom: 1.5rem;
     line-height: 1.2;
 }
 
@@ -173,4 +173,9 @@ body::before {
 
 .card-content > *:last-child {
     margin-bottom: 0;
+}
+
+/* Global rule to fix spacing between title and subtitle */
+.title + .subtitle {
+    margin-top: 1.5rem !important;
 }

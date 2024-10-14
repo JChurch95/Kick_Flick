@@ -4,13 +4,13 @@ html, body {
 }
 
 body {
-    background-image: url('/media/brand_pic.png'), linear-gradient(rgba(255,255,255,0.5), rgba(255,255,255,0.5));
+    background-image: url('/media/brand_pic.png'), linear-gradient(rgba(255,255,255,0.30), rgba(255,255,255,0.30));
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
     background-attachment: fixed;
     background-blend-mode: overlay;
-    cursor: url('/media/kick\ flick\ cursor.png'), auto; /* Added custom cursor */
+    cursor: url('/media/kick\ flick\ cursor.png'), auto;
 }
 
 body::before {
@@ -62,11 +62,12 @@ body::before {
 }
 
 .skater-info h2 {
-    font-size: 2.5rem;
+    font-size: 5rem !important;
     margin-bottom: 1.5rem;
     line-height: 1.2;
     text-decoration: underline;
     text-underline-offset: 8px;
+    font-family: 'Jolly Lodger', cursive;
 }
 
 .skater-picture {
@@ -76,10 +77,11 @@ body::before {
     border-radius: 8px;
     margin: 0 auto;
     display: block;
+    border: 2px solid black;
 }
 
 .skater-info p {
-    margin-bottom: 1.5rem; /* Set consistent margin-bottom for all <p> tags */
+    margin-bottom: 1.5rem;
     line-height: 1.6;
 }
 
@@ -91,10 +93,22 @@ body::before {
 /* New styles for skater info labels and values */
 .skater-info .info-label {
     font-weight: bold;
+    font-family: 'Jolly Lodger', cursive;
+    text-decoration: underline;
+    text-underline-offset: 5px;
+    font-size: 2rem;
+    display: block;
 }
 
 .skater-info .info-value {
     font-weight: normal;
+    font-size: 1.25rem !important;
+    display: block;
+}
+
+/* New style for bio text justification */
+.skater-info p:last-child .info-value {
+    text-align: justify;
 }
 
 /* Reinforcing Bulma's bold class */
@@ -163,29 +177,33 @@ body::before {
 .video-title {
     margin-bottom: 0.25rem !important;
     line-height: 1.2;
-    font-size: 1.25rem;
+    font-size: 3rem !important;
     font-weight: bold;
-    text-align:  center;
+    text-align: center;
     text-decoration: underline;
     text-underline-offset: 5px;
+    font-family: 'Jolly Lodger', cursive;
 }
 
 .video-date {
     margin-top: 0;
     margin-bottom: 0.25rem;
     color: #000000;
-    font-size: 1rem;
+    font-size: 1.35rem !important;
     text-align: center;
 }
 
 .video-date .year-label {
     font-weight: bold;
+    font-family: 'Jolly Lodger', cursive;
+    font-size: 2.25rem !important;
+    
 }
 
 /* Responsive iframe container */
 .video-wrapper {
     position: relative;
-    padding-bottom: 56.25%; /* 16:9 aspect ratio */
+    padding-bottom: 56.25%;
     height: 0;
     overflow: hidden;
     margin-top: 0.5rem;

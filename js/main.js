@@ -112,18 +112,20 @@ function displaySkaterInfo(skaterInfo) {
                     <h2 class="title is-3">${skaterInfo.skater_name}</h2>
                     ${pictureHtml}
                 </div>
-                <p class="subtitle is-5">
-                    <span class="info-label">Nationality:</span> 
-                    <span class="info-value">${skaterInfo.nationality}</span>
-                </p>
-                <p class="subtitle is-5">
-                    <span class="info-label">Brand:</span> 
-                    <span class="info-value">${skaterInfo.brand}</span>
-                </p>
-                <p class="subtitle is-5">
-                    <span class="info-label">Bio:</span> 
-                    <span class="info-value">${skaterInfo.bio}</span>
-                </p>
+                <div class="skater-info">
+                    <p>
+                        <span class="info-label">Nationality:</span> 
+                        <span class="info-value">${skaterInfo.nationality}</span>
+                    </p>
+                    <p>
+                        <span class="info-label">Brand:</span> 
+                        <span class="info-value">${skaterInfo.brand}</span>
+                    </p>
+                    <p>
+                        <span class="info-label">Bio:</span> 
+                        <span class="info-value">${skaterInfo.bio}</span>
+                    </p>
+                </div>
             </div>
         </div>
     `;
@@ -150,7 +152,7 @@ function displayVideos(videos) {
             <div class="card">
                 <div class="card-content">
                     <h3 class="title is-4 video-title">${video.video_name}</h3>
-                    <p class="subtitle is-6 video-date"><span class="year-label">Year: </span>${video.video_date}</p>
+                    <p class="subtitle is-6 video-date"><span class="year-label">Year:&nbsp;</span>${video.video_date}</p>
                     <div class="video-wrapper">
                         <iframe
                             src="https://www.youtube.com/embed/${videoId}"

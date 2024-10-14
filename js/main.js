@@ -3,9 +3,14 @@ document.addEventListener('DOMContentLoaded', function () {
     const searchForm = document.querySelector('#searchForm');
     const contactForm = document.querySelector('#contactForm');
     
+    // Create an Audio object for the kick flip sound
+    const kickFlipSound = new Audio('./media/do-a-kickflip.mp3');
+    
     if (searchForm) {
         searchForm.addEventListener('submit', function(e) {
             e.preventDefault();
+            // Play the kick flip sound
+            kickFlipSound.play();
             searchVideos();
         });
     } else {
@@ -186,7 +191,7 @@ function submitContactForm() {
     console.log('Form submitted:', formObject);
 
     // Display a success message
-    alert('Thank you for your submission! We will review the information and add the skater to our database soon.');
+    alert('Thank you for your submission! Now go shred!');
     
     // Reset the form
     form.reset();

@@ -120,6 +120,12 @@ app.get("/videos/{item_id}")(read_generic(Video))
 app.put("/videos/{item_id}")(update_generic(Video))
 app.delete("/videos/{item_id}")(delete_generic(Video))
 
+# Pictures CRUD
+app.post("/pictures/")(create_generic(Picture))
+app.get("/pictures/{item_id}")(read_generic(Picture))
+app.put("/pictures/{item_id}")(update_generic(Picture))
+app.delete("/pictures/{item_id}")(delete_generic(Picture))
+
 # Run the app
 if __name__ == "__main__":
     uvicorn.run("main:app", host="localhost", port=8000, reload=True)
